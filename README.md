@@ -29,7 +29,7 @@ This API package in this repo is based on the Data Science work in the following
   ```python
   INSTALLED_APPS = [     
                       ...     
-                      'civic',     
+                      'api',     
                       ...
                     ]
   ```
@@ -37,12 +37,12 @@ This API package in this repo is based on the Data Science work in the following
 * Add hackoregon_housing's URL patterns:
 
   ```python
-  from hackoregon_housing.civic
-  import urls as civic_urls   
+  from hackoregon_housing.api
+  import urls as api_urls   
 
   urlpatterns = [     
                   ...     
-                  url(r'^', include(civic_urls)),     
+                  url(r'^', include(api_urls)),     
                   ...
                 ]
   ```
