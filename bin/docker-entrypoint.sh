@@ -29,10 +29,10 @@ fi
 chmod +x *.py
 
 echo "Make migrations"
-python -Wall manage.py makemigrations civic
+python -Wall manage.py makemigrations api
 
 echo "Migrate"
-python -Wall manage.py migrate
+python -Wall manage.py migrate --fake
 
 # Collect static files
 echo "Collect static files"

@@ -27,11 +27,11 @@ Install hackoregon_housing:
 
 Add subpackages to your `INSTALLED_APPS`:
 
-`` ` python INSTALLED_APPS = (     ...     'civic',     ... ) ```
+`` ` python INSTALLED_APPS = (     ...     'api',     ... ) ```
 
 Add hackoregon_housing's URL patterns:
 
-`` ` python from hackoregon_housing.civic import urls as civic_urls   urlpatterns = [     ...     url(r'^', include(civic_urls)),     ... ] ```
+`` ` python from hackoregon_housing.api import urls as api_urls   urlpatterns = [     ...     url(r'^', include(api_urls)),     ... ] ```
 
 Setup your database with a matching schema
 

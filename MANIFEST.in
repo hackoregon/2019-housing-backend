@@ -3,4 +3,4 @@ include CONTRIBUTING.md
 include HISTORY.md
 include LICENSE
 include README.md
-recursive-include hackoregon_housing civic *.html *.png *.gif *js *.css *jpg *jpeg *svg *py
+recursive-include hackoregon_housing api *.html *.png *.gif *js *.css *jpg *jpeg *svg *py
