@@ -13,13 +13,28 @@ class CardOneViewSet(APIView):
     def get(self, request):
         portland_rows = NcdbSampleYearly.objects.filter(metroname="Portland-Vancouver-Hillsboro, OR-WA")
         years = set(row.year for row in portland_rows)
-        response = {row.year : {"white" : 0, "black": 0, "hisp": 0, "asoth": 0} for year in years} :
+        response = {year : {"white" : 0, "black": 0, "hisp": 0, "asoth": 0} for year in years}
 
-        for row in portland_rows:
-            response[row.year["white"]] += (row.population * row.whiteshare / 100)
-            response[row.year["black"]] += (row.population * row.blackshare / 100)
-            response[row.year["hisp"]] += (row.population * row.hispshare / 100)
-            response[row.year["asoth"]] += (row.population * row.asothshare / 100)
+        for row in portland_rows: # TODO: worth checking back in on why these are null
+            pop = row.tractpopulation
+            if pop is None:
+                pop = 0
+            whiteshare = row.whiteshare
+            if whiteshare is None:
+                whiteshare = 0
+            blackshare = row.blackshare
+            if blackshare is None:
+                blackshare = 0
+            hispshare = row.hispshare
+            if hispshare is None:
+                hispshare = 0
+            asothshare = row.asothshare
+            if asothshare is None:
+                asothshare = 0
+            response[row.year]["white"] += (pop * whiteshare * 0.01)
+            response[row.year]["black"] += (pop * blackshare * 0.01)
+            response[row.year]["hisp"] += (pop * hispshare * 0.01)
+            response[row.year]["asoth"] += (pop * asothshare * 0.01)
 
         return Response(response)
 

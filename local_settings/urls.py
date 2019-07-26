@@ -21,7 +21,6 @@ from rest_framework_swagger.views import get_swagger_view
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'card_one', views.CardOneViewSet.as_view())
 router.register(r'card_two', views.CardTwoViewSet)
 router.register(r'card_three', views.CardThreeViewSet)
 router.register(r'card_four', views.CardFourViewSet)
@@ -37,6 +36,7 @@ schema_view = get_swagger_view(title='Housing API')
 
 urlpatterns = [
     path('api/', include(router.urls)),
+    path('api/card-one', views.CardOneViewSet.as_view(), name="card_one"),
     path('', schema_view)
 ]
 
