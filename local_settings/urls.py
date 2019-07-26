@@ -21,6 +21,12 @@ from rest_framework_swagger.views import get_swagger_view
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
+router.register(r'card_one', views.CardOneViewSet.as_view())
+router.register(r'card_two', views.CardTwoViewSet)
+router.register(r'card_three', views.CardThreeViewSet)
+router.register(r'card_four', views.CardFourViewSet)
+router.register(r'card_five', views.CardFiveViewSet)
+router.register(r'card_six', views.CardSixViewSet)
 router.register(r'ncdbsampleyearly', views.NcdbSampleYearlyViewSet)
 router.register(r'ncdbsamplechanges', views.NcdbSampleChangesViewSet)
 router.register(r'fipsrecords', views.FIPSRecordsViewSet)
