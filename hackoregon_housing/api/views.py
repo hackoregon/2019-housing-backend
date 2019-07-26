@@ -11,20 +11,36 @@ from django_filters import rest_framework as filters
 class CardOneViewSet(APIView):
 
     def get(self, request):
-        portland_rows = NcdbSampleYearly.objects.filter(metroname="Portland-Vancouver-Hillsboro, OR-WA")
+        black_proportion_filter = float(request.GET.get('1990-black-pop-proportion-floor', '0'))
+
+        portland_rows = NcdbSampleYearly.objects.filter(metroname="Portland-Vancouver-Hillsboro, OR-WA").select_related('fips_code').order_by('year')
+
         years = set(row.year for row in portland_rows)
         response = {year : {"white" : 0, "black": 0, "hisp": 0, "asoth": 0} for year in years}
+        skips = []
 
-        for row in portland_rows: # TODO: worth checking back in on why these are null
+        for row in portland_rows:
+            print(row.year)
+            if row.fips_code.geo_fips in skips:
+                continue
+
+            blackshare = row.blackshare
+            if blackshare is None:
+                blackshare = 0
+
+            if( row.year == 1990 and (blackshare * 0.01) < black_proportion_filter):
+                skips.append(row.fips_code.geo_fips)
+                continue
+            else:
+                print('Black share: ' + str(blackshare * 0.01))
+                print('Filter: ' + str(black_proportion_filter))
+
             pop = row.tractpopulation
             if pop is None:
                 pop = 0
             whiteshare = row.whiteshare
             if whiteshare is None:
                 whiteshare = 0
-            blackshare = row.blackshare
-            if blackshare is None:
-                blackshare = 0
             hispshare = row.hispshare
             if hispshare is None:
                 hispshare = 0
@@ -35,6 +51,12 @@ class CardOneViewSet(APIView):
             response[row.year]["black"] += (pop * blackshare * 0.01)
             response[row.year]["hisp"] += (pop * hispshare * 0.01)
             response[row.year]["asoth"] += (pop * asothshare * 0.01)
+
+        for year in years:
+            response[year]["white"] = round(response[year]["white"])
+            response[year]["black"] = round(response[year]["black"])
+            response[year]["hisp"] = round(response[year]["hisp"])
+            response[year]["asoth"] = round(response[year]["asoth"])
 
         return Response(response)
 
