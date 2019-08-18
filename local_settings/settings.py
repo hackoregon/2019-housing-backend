@@ -57,11 +57,11 @@ MIDDLEWARE = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'housing-2019-staging',
-        'USER': 'housing2019',
-        'PASSWORD': '9wpXkWvNujAV',
-        'HOST': 'housing-2019-staging.caicgny9d8nv.us-west-2.rds.amazonaws.com',
-        'PORT': '5432',
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+        "NAME": os.environ.get("POSTGRES_NAME"),
+        "USER": os.environ.get("POSTGRES_USER"),
+        "HOST": os.environ.get("POSTGRES_HOST"),
+        "PORT": os.environ.get("POSTGRES_PORT"),
     },
 }
 
