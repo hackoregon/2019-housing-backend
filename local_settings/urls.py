@@ -37,7 +37,7 @@ schema_view = get_swagger_view(title='Housing API')
 urlpatterns = [
     path('api/', include(router.urls)),
     path('api/card-one', views.CardOneViewSet.as_view(), name="card_one"),
-    path('', schema_view)
+    path('schema/', schema_view)
 ]
 
 # router = routers.DefaultRouter()
