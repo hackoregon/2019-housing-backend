@@ -7,6 +7,8 @@ from rest_framework.decorators import list_route
 from rest_framework.views import APIView
 from api.filters import NcdbSampleChangesFilter, NcdbSampleYearlyFilter, FIPSRecordsFilter, HmdaOrwaFilter, TotalLoansFilter
 from django_filters import rest_framework as filters
+from djangofilters.rest_framework import DjangoFilterBackend
+import coreapi
 
 class CardOneViewSet(APIView):
 
@@ -59,37 +61,6 @@ class CardOneViewSet(APIView):
             response[year]["asoth"] = round(response[year]["asoth"])
 
         return Response(response)
-
-class CardTwoViewSet(viewsets.ViewSet):
-    queryset = NcdbSampleChanges.objects.all()
-    serializer_class = NcdbSampleChangesSerializer
-    filter_class = NcdbSampleChangesFilter
-    ordering_fields = '__all__'
-
-class CardThreeViewSet(viewsets.ViewSet):
-    queryset = NcdbSampleChanges.objects.all()
-    serializer_class = NcdbSampleChangesSerializer
-    filter_class = NcdbSampleChangesFilter
-    ordering_fields = '__all__'
-
-class CardFourViewSet(viewsets.ViewSet):
-    queryset = NcdbSampleChanges.objects.all()
-    serializer_class = NcdbSampleChangesSerializer
-    filter_class = NcdbSampleChangesFilter
-    ordering_fields = '__all__'
-
-class CardFiveViewSet(viewsets.ViewSet):
-    queryset = NcdbSampleChanges.objects.all()
-    serializer_class = NcdbSampleChangesSerializer
-    filter_class = NcdbSampleChangesFilter
-    ordering_fields = '__all__'
-
-class CardSixViewSet(viewsets.ViewSet):
-    queryset = NcdbSampleChanges.objects.all()
-    serializer_class = NcdbSampleChangesSerializer
-    filter_class = NcdbSampleChangesFilter
-    ordering_fields = '__all__'
-
 
 class NcdbSampleChangesViewSet(viewsets.ModelViewSet):
     queryset = NcdbSampleChanges.objects.all()

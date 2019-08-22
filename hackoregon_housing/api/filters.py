@@ -1,6 +1,14 @@
 from django_filters import rest_framework as filters
 from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans
 
+from django_filters import Filter
+from django_filters.fields import Lookup
+
+class ListFilter(Filter): # just use this for every field you need to filter multiple on
+    def filter(self, qs, value):
+        value_list = value.split(u',')
+        return super(ListFilter, self).filter(qs, Lookup(value_list, 'in'))
+
 class NcdbSampleChangesFilter(filters.FilterSet):
     # fips_code = filters.ModelChoiceFilter(FIPSRecords.objects.all())
     # start_year = filters.NumberFilter()
