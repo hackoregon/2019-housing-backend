@@ -55,28 +55,4 @@ race_tenure.pdx <- race_tenure %>%
          share_total_own_hisp = total_own_hisp / total_own) %>%
   select(DATAYEAR, tract_fips:share_total_own_hisp)
 
-##### Posting to PostGRES database #####
-## https://www.r-bloggers.com/getting-started-with-postgresql-in-r/
-
-# install.packages("RPostgreSQL")
-require("RPostgreSQL")
-
-# create a connection
-# source the postgresql password
-source("../server_password.R") # pw <- {'PASSWORD'}
-
-# loads the PostgreSQL driver
-drv <- dbDriver("PostgreSQL")
-# creates a connection to the postgres database
-# note that "con" will be used later in each connection to the database
-con <- dbConnect(drv, dbname = "housing-2019-staging",
-                 host = "housing-2019-staging.caicgny9d8nv.us-west-2.rds.amazonaws.com", port = 5432,
-                 user = "housing2019", password = pw)
-rm(pw) # removes the password
-
-if (!(dbExistsTable(con, "race_by_tenure_1990t2010"))) {
-  dbWriteTable(con, "race_by_tenure_1990t2010", race_tenure.pdx, row.names = FALSE)
-} else {
-  print("Already in db.")
-}
-
+saveRDS(race_tenure.pdx, "../data/cleaned_data/race_by_tenure_1990t2010.RDS")
