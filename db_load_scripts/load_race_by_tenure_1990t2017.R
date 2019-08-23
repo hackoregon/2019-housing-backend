@@ -19,8 +19,9 @@ con <- dbConnect(drv, dbname = "housing-2019-staging",
                  user = "housing2019", password = pw)
 rm(pw) # removes the password
 
-# dbSendQuery(con, "DROP TABLE race_by_tenure_1990t2010")
+# dbSendQuery(con, "DROP TABLE race_by_tenure_1990t2017")
 
+# if the table doesn't exist, create it, otherwise notify in console
 if (!(dbExistsTable(con, "race_by_tenure_1990t2017"))) {
   dbWriteTable(con, "race_by_tenure_1990t2017", race_by_tenure_1990t2017, row.names = FALSE)
 } else {
