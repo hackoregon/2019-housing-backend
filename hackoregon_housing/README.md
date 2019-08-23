@@ -1,10 +1,6 @@
-|
---------------------------------------------- |
-hackoregon_housing |
+# hackoregon_housing
 
-[![image](<https://badge.fury.io/py/>2019-housing-backend.svg)](<https://badge.fury.io/py/>2019-housing-backend)
-
-[![image](<https://travis-ci.org/hackoregon/>2019-housing-backend.svg?branch=master)](<https://travis-ci.org/hackoregon/>2019-housing-backend)
+![PyPI version](https://badge.fury.io/py/2019-housing-backend.svg) | [![Build Status](https://travis-ci.org/hackoregon/2019-housing-backend.svg?branch=master)](https://travis-ci.org/hackoregon/2019-housing-backend)
 
 This projects maps the state of the housing market in Oregon using data from Harvard Joint Center for Housing Studies, Neighborhood Change Database, and Home Mortgage Disclosure Act data.
 
