@@ -30,6 +30,7 @@ from rest_framework.schemas import SchemaGenerator
 from rest_framework.views import APIView
 from rest_framework_swagger import renderers
 from rest_framework_swagger.views import get_swagger_view
+from rest_framework.documentation import include_docs_urls
 from api import views
 
 router = DefaultRouter()
@@ -68,13 +69,19 @@ def get_swagger_view(title=None, url=None, patterns=None, urlconf=None):
 
     return SwaggerSchemaView.as_view()
 
-schema_view = get_swagger_view(title="Hack Oregon Housing 2019 API")
+api_title = 'Hack Oregon Housing 2019 API'
+
+schema_view = get_swagger_view(title=api_title)
 
 urlpatterns = [
-    url(r"housing2019/v1/schema", schema_view),
-    url(r'housing2019/v1/api/card-one', views.CardOneView.as_view()),
+    url(r"housing/v1/schema", schema_view),
+    url(r'housing/v1/api/card-one', views.CardOneView.as_view()),
     url(
-        r"housing2019/v1/api/",
+        r"housing/v1/api/",
         include("hackoregon_housing.api.urls"),
     ),
+        url(r'^housing/docs/', include_docs_urls(title=api_title)),
+        url(r'^housing/health/', include('health_check.urls'))
 ]
+
+url(r'^$', schema_view)

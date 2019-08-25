@@ -1,0 +1,17 @@
+{
+    "_template": "gh:hackoregon/2019-backend-cookiecutter-django",
+    "data_science_repo_name": "2019-housing-data-science",
+    "data_science_repo_url": "https://github.com/hackoregon/2019-housing-data-science",
+    "email": "kim.gault@hackoregon.org",
+    "full_name": "Kim Gault",
+    "gis_project": "False",
+    "github_repo": "2019-housing-backend",
+    "github_username": "kimgault",
+    "hack_oregon_team": "Housing",
+    "project_root_path": "housing",
+    "project_short_description": "This projects maps the state of the housing market in Oregon using data from Harvard Joint Center for Housing Studies, Neighborhood Change Database, and Home Mortgage Disclosure Act data.",
+    "python_package_namespace": "hackoregon_housing",
+    "python_subpackage": "api",
+    "version": "0.1.0",
+    "year": "2019"
+}
