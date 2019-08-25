@@ -80,8 +80,8 @@ urlpatterns = [
         r"housing/v1/api/",
         include("hackoregon_housing.api.urls"),
     ),
-        url(r'^housing/docs/', include_docs_urls(title=api_title)),
-        url(r'^housing/health/', include('health_check.urls'))
+        url(r'^housing/v1/docs/', include_docs_urls(title=api_title)),
+        url(r'^housing/v1/health/', include('health_check.urls'))
 ]
 
 url(r'^$', schema_view)
