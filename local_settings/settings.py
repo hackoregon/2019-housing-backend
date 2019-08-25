@@ -25,7 +25,7 @@ SECRET_KEY = ')p4_nf1ip6c@x(*==ba3b@c^!pv2t$2!3%biyo!s(pb+37-w*n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -38,7 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'api'
+    "corsheaders",
+    "django_filters",
+    'api',
+    "rest_framework_gis",
+    "rest_framework_swagger",
+    "health_check",  # required
+    "health_check.db",  # stock Django health checkers
+    "health_check.storage",
+    "health_check.contrib.psutil",  # disk and memory utilization; requires psutil
 ]
 
 MIDDLEWARE = [
@@ -101,6 +109,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATIC_URL = '/static/'
 
