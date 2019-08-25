@@ -108,3 +108,5 @@ venv.bak/
 staticfiles/
 
 server_password.R
+
+.env
