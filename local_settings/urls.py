@@ -74,14 +74,14 @@ api_title = 'Hack Oregon Housing 2019 API'
 schema_view = get_swagger_view(title=api_title)
 
 urlpatterns = [
-    url(r"housing/v1/schema", schema_view),
-    url(r'housing/v1/api/card-one', views.CardOneView.as_view()),
+    url(r"housing2019/v1/schema", schema_view),
+    url(r'housing2019/v1/api/card-one', views.CardOneView.as_view()),
     url(
-        r"housing/v1/api/",
+        r"housing2019/v1/api/",
         include("hackoregon_housing.api.urls"),
     ),
-        url(r'^housing/v1/docs/', include_docs_urls(title=api_title)),
-        url(r'^housing/v1/health/', include('health_check.urls'))
+        url(r'^housing2019/v1/docs/', include_docs_urls(title=api_title)),
+        url(r'^housing2019/v1/health/', include('health_check.urls'))
 ]
 
 url(r'^$', schema_view)
