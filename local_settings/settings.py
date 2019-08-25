@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     "health_check.db",  # stock Django health checkers
     "health_check.storage",
     "health_check.contrib.psutil",  # disk and memory utilization; requires psutil
-    "toad",
 ]
 
 MIDDLEWARE = [
@@ -110,6 +109,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATIC_URL = '/static/'
 
