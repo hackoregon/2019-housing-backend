@@ -152,3 +152,85 @@ class TotalLoans(models.Model):
     class Meta:
         managed = True
         db_table = 'total_loans'
+
+class MedianHouseholdIncomeByRace2017(models.Model):
+    geoid = models.TextField(db_column='GEOID', blank=True, null=True)  # Field name made lowercase.
+    sumlevel = models.TextField(blank=True, null=True)
+    name = models.TextField(db_column='NAME', blank=True, null=True)  # Field name made lowercase.
+    hh_income_total = models.FloatField(blank=True, null=True)
+    hh_income_white = models.FloatField(blank=True, null=True)
+    hh_income_black = models.FloatField(blank=True, null=True)
+    hh_income_aian = models.FloatField(blank=True, null=True)
+    hh_income_asian = models.FloatField(blank=True, null=True)
+    hh_income_nhpi = models.FloatField(blank=True, null=True)
+    hh_income_other = models.FloatField(blank=True, null=True)
+    hh_income_multi = models.FloatField(blank=True, null=True)
+    hh_income_whitenh = models.FloatField(blank=True, null=True)
+    hh_income_hisp = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'median_household_income_by_race_2017'
+
+class RaceByTenure1990T2017(models.Model):
+    datayear = models.FloatField(db_column='DATAYEAR', blank=True, null=True)  # Field name made lowercase.
+    source = models.TextField(blank=True, null=True)
+    tract_fips = models.TextField(blank=True, null=True)
+    total_hh = models.FloatField(blank=True, null=True)
+    total_own = models.FloatField(blank=True, null=True)
+    share_own = models.FloatField(blank=True, null=True)
+    total_hh_white = models.FloatField(blank=True, null=True)
+    total_own_white = models.FloatField(blank=True, null=True)
+    share_own_white = models.FloatField(blank=True, null=True)
+    total_hh_black = models.FloatField(blank=True, null=True)
+    total_own_black = models.FloatField(blank=True, null=True)
+    share_own_black = models.FloatField(blank=True, null=True)
+    total_hh_aian = models.FloatField(blank=True, null=True)
+    total_own_aian = models.FloatField(blank=True, null=True)
+    share_own_aian = models.FloatField(blank=True, null=True)
+    total_hh_api = models.FloatField(blank=True, null=True)
+    total_own_api = models.FloatField(blank=True, null=True)
+    share_own_api = models.FloatField(blank=True, null=True)
+    total_hh_other = models.FloatField(blank=True, null=True)
+    total_own_other = models.FloatField(blank=True, null=True)
+    share_own_other = models.FloatField(blank=True, null=True)
+    total_hh_multi = models.FloatField(blank=True, null=True)
+    total_own_multi = models.FloatField(blank=True, null=True)
+    share_own_multi = models.FloatField(blank=True, null=True)
+    total_hh_hisp = models.FloatField(blank=True, null=True)
+    total_own_hisp = models.FloatField(blank=True, null=True)
+    share_own_hisp = models.FloatField(blank=True, null=True)
+    share_total_own_white = models.FloatField(blank=True, null=True)
+    share_total_own_black = models.FloatField(blank=True, null=True)
+    share_total_own_aian = models.FloatField(blank=True, null=True)
+    share_total_own_api = models.FloatField(blank=True, null=True)
+    share_total_own_other = models.FloatField(blank=True, null=True)
+    share_total_own_multi = models.FloatField(blank=True, null=True)
+    share_total_own_hisp = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'race_by_tenure_1990t2017'
+
+class Tl201041Tabblock10(models.Model):
+    ogc_fid = models.AutoField(primary_key=True)
+    statefp10 = models.CharField(max_length=2, blank=True, null=True)
+    countyfp10 = models.CharField(max_length=3, blank=True, null=True)
+    tractce10 = models.CharField(max_length=6, blank=True, null=True)
+    blockce10 = models.CharField(max_length=4, blank=True, null=True)
+    geoid10 = models.CharField(max_length=15, blank=True, null=True)
+    name10 = models.CharField(max_length=10, blank=True, null=True)
+    mtfcc10 = models.CharField(max_length=5, blank=True, null=True)
+    ur10 = models.CharField(max_length=1, blank=True, null=True)
+    uace10 = models.CharField(max_length=5, blank=True, null=True)
+    uatyp10 = models.CharField(max_length=1, blank=True, null=True)
+    funcstat10 = models.CharField(max_length=1, blank=True, null=True)
+    aland10 = models.DecimalField(max_digits=14, decimal_places=0, blank=True, null=True)
+    awater10 = models.DecimalField(max_digits=14, decimal_places=0, blank=True, null=True)
+    intptlat10 = models.CharField(max_length=11, blank=True, null=True)
+    intptlon10 = models.CharField(max_length=12, blank=True, null=True)
+    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = 'tl_2010_41_tabblock10'

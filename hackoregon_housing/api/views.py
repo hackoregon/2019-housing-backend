@@ -1,11 +1,11 @@
-from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans
-from api.serializers import NcdbSampleChangesSerializer, NcdbSampleYearlySerializer, FIPSRecordsSerializer, HmdaOrwaSerializer, TotalLoansSerializer
+from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10
+from api.serializers import NcdbSampleChangesSerializer, NcdbSampleYearlySerializer, FIPSRecordsSerializer, HmdaOrwaSerializer, TotalLoansSerializer, MedianHouseholdIncomeByRace2017Serializer, RaceByTenure1990T2017Serializer, Tl201041Tabblock10Serializer
 from django.contrib.postgres.fields import ArrayField
 from rest_framework.response import Response
 from rest_framework import viewsets
 # from rest_framework.decorators import list_route
 from rest_framework.views import APIView
-from api.filters import NcdbSampleChangesFilter, NcdbSampleYearlyFilter, FIPSRecordsFilter, HmdaOrwaFilter, TotalLoansFilter
+from api.filters import NcdbSampleChangesFilter, NcdbSampleYearlyFilter, FIPSRecordsFilter, HmdaOrwaFilter, TotalLoansFilter, MedianHouseholdIncomeByRace2017Filter, RaceByTenure1990T2017Filter, Tl201041Tabblock10Filter
 from django_filters import rest_framework as filters
 from django_filters.rest_framework import DjangoFilterBackend
 import coreapi
@@ -90,4 +90,22 @@ class TotalLoansViewSet(viewsets.ModelViewSet):
     queryset = TotalLoans.objects.all()
     serializer_class = TotalLoansSerializer
     filter_class = TotalLoansFilter
+    ordering_fields = '__all__'
+
+class MedianHouseholdIncomeByRace2017ViewSet(viewsets.ModelViewSet):
+    queryset = MedianHouseholdIncomeByRace2017.objects.all()
+    serializer_class = MedianHouseholdIncomeByRace2017Serializer
+    filter_class = MedianHouseholdIncomeByRace2017Filter
+    ordering_fields = '__all__'
+
+class RaceByTenure1990T2017ViewSet(viewsets.ModelViewSet):
+    queryset = RaceByTenure1990T2017.objects.all()
+    serializer_class = RaceByTenure1990T2017Serializer
+    filter_class = RaceByTenure1990T2017Filter
+    ordering_fields = '__all__'
+
+class Tl201041Tabblock10ViewSet(viewsets.ModelViewSet):
+    queryset = Tl201041Tabblock10.objects.all()
+    serializer_class = Tl201041Tabblock10Serializer
+    filter_class = Tl201041Tabblock10Filter
     ordering_fields = '__all__'
