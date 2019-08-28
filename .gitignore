@@ -106,3 +106,7 @@ venv.bak/
 **/.DS_Store
 
 staticfiles/
+
+server_password.R
+
+.env
