@@ -1,5 +1,10 @@
-from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10
+from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10, ResidentialBuildingPermitData
 from rest_framework import serializers
+
+class ResidentialBuildingPermitDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ResidentialBuildingPermitData
+        fields = "__all__" # TODO: replace with individual fields
 
 class NcdbSampleYearlySerializer(serializers.ModelSerializer):
     class Meta:

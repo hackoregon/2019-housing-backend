@@ -1,5 +1,48 @@
 from django.db import models
 
+# class HomeInflationKriging(models.Model):
+#     appreciation_estimates = models.FloatField(blank=True, null=True)
+#     geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+#
+#     class Meta:
+#         managed = False
+#         db_table = 'home_inflation_kriging'
+
+class ResidentialBuildingPermitData(models.Model):
+    index = models.BigIntegerField(primary_key=True)
+    x = models.FloatField(db_column='X', blank=True, null=True)  # Field name made lowercase.
+    y = models.FloatField(db_column='Y', blank=True, null=True)  # Field name made lowercase.
+    objectid = models.BigIntegerField(db_column='OBJECTID', blank=True, null=True)  # Field name made lowercase.
+    indate = models.TextField(db_column='INDATE', blank=True, null=True)  # Field name made lowercase.
+    issuedate = models.TextField(db_column='ISSUEDATE', blank=True, null=True)  # Field name made lowercase.
+    status = models.TextField(db_column='STATUS', blank=True, null=True)  # Field name made lowercase.
+    year_field = models.BigIntegerField(db_column='YEAR_', blank=True, null=True)  # Field name made lowercase. Field renamed because it ended with '_'.
+    newclass = models.TextField(db_column='NEWCLASS', blank=True, null=True)  # Field name made lowercase.
+    newtype = models.TextField(db_column='NEWTYPE', blank=True, null=True)  # Field name made lowercase.
+    nbrhood = models.TextField(db_column='NBRHOOD', blank=True, null=True)  # Field name made lowercase.
+    pdxbnd = models.TextField(db_column='PDXBND', blank=True, null=True)  # Field name made lowercase.
+    is_adu = models.NullBooleanField(db_column='IS_ADU')  # Field name made lowercase.
+    rev = models.TextField(db_column='REV', blank=True, null=True)  # Field name made lowercase.
+    foldernumb = models.TextField(db_column='FOLDERNUMB', blank=True, null=True)  # Field name made lowercase.
+    prop_addre = models.TextField(db_column='PROP_ADDRE', blank=True, null=True)  # Field name made lowercase.
+    workdesc = models.TextField(db_column='WORKDESC', blank=True, null=True)  # Field name made lowercase.
+    sub = models.TextField(db_column='SUB', blank=True, null=True)  # Field name made lowercase.
+    occ = models.TextField(db_column='OCC', blank=True, null=True)  # Field name made lowercase.
+    new_units = models.BigIntegerField(db_column='NEW_UNITS', blank=True, null=True)  # Field name made lowercase.
+    folder_des = models.TextField(db_column='FOLDER_DES', blank=True, null=True)  # Field name made lowercase.
+    valuation = models.BigIntegerField(db_column='VALUATION', blank=True, null=True)  # Field name made lowercase.
+    const = models.TextField(db_column='CONST', blank=True, null=True)  # Field name made lowercase.
+    proplot = models.TextField(db_column='PROPLOT', blank=True, null=True)  # Field name made lowercase.
+    propgisid1 = models.TextField(db_column='PROPGISID1', blank=True, null=True)  # Field name made lowercase.
+    propertyro = models.TextField(db_column='PROPERTYRO', blank=True, null=True)  # Field name made lowercase.
+    folderrsn = models.BigIntegerField(db_column='FOLDERRSN', blank=True, null=True)  # Field name made lowercase.
+    x_coord = models.FloatField(db_column='X_COORD', blank=True, null=True)  # Field name made lowercase.
+    y_coord = models.FloatField(db_column='Y_COORD', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'residential_building_permit_data'
+
 class NcdbSampleChanges(models.Model):
     fips_code = models.ForeignKey('FIPSRecords', null=True, on_delete=models.SET_NULL)
     cbsa = models.FloatField(blank=True, null=True)

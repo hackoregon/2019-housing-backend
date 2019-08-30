@@ -1,5 +1,5 @@
 from django_filters import rest_framework as filters
-from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10
+from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10, ResidentialBuildingPermitData
 import coreapi
 from django_filters import Filter, NumberFilter
 from django_filters.fields import Lookup
@@ -7,6 +7,14 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 class NumberInFilter(filters.BaseInFilter, filters.NumberFilter):
     pass
+
+
+
+class ResidentialBuildingPermitDataFilter(filters.FilterSet):
+
+    class Meta:
+        model = ResidentialBuildingPermitData
+        fields = '__all__'
 
 class NcdbSampleChangesFilter(filters.FilterSet):
 
