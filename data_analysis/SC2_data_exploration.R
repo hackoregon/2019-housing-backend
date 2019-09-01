@@ -1,6 +1,6 @@
 ##### Load libraries, set working directory #####
 if(!require(pacman)){install.packages("pacman");library(pacman)}
-p_load(tidyverse, tigris, tidycensus, rio, viridis, sf, mapview, plotly)
+p_load(tidyverse, tigris, tidycensus, rio, viridis, sf, mapview, plotly, RColorBrewer)
 options(tigris_use_cache = T); options(tigris_class = "sf")
 
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
@@ -20,7 +20,8 @@ homeownership_by_race_2011_3 <- readRDS("../data/cleaned_data/homeownership_by_r
 
 pal <- colorRampPalette(brewer.pal(9, "RdYlBu"))
 
-mapview(homeownership_by_race_2017_3 %>% select(lq_white.brks:lq_hisp.brks), col.regions = pal(5), burst = TRUE, hide = TRUE)
+mapview(homeownership_by_race_2017_3 %>% select(lq_white.brks:lq_hisp.brks), 
+        col.regions = pal(5), burst = TRUE, hide = TRUE)
 # mapview(homeownership_by_race_2011_3 %>% select(lq_white.brks:lq_hisp.brks), col.regions = pal(5), burst = TRUE, hide = TRUE)
 
 
