@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+SECURE_SSL_REDIRECT = bool(int(os.environ.get('SECURE_SSL_REDIRECT', 0)))
+USE_X_FORWARDED_HOST = SECURE_SSL_REDIRECT
 
 # Application definition
 
