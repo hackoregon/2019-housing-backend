@@ -23,11 +23,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')p4_nf1ip6c@x(*==ba3b@c^!pv2t$2!3%biyo!s(pb+37-w*n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (os.environ.get('DEBUG').lower() == "true")
 
 ALLOWED_HOSTS = ["*"]
 
-SECURE_SSL_REDIRECT = bool(int(os.environ.get('SECURE_SSL_REDIRECT', 1)))
+if DEBUG == False:
+    SECURE_SSL_REDIRECT = True
+else:
+    SECURE_SSL_REDIRECT = False
 USE_X_FORWARDED_HOST = SECURE_SSL_REDIRECT
 
 # Application definition
