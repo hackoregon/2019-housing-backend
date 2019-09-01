@@ -1,5 +1,5 @@
 from django_filters import rest_framework as filters
-from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10, ResidentialBuildingPermitData
+from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10, ResidentialBuildingPermitData, HomeInflationKriging, MultnomahHomeOwnershipByRace, PortlandHomeAppreciationAnnuallySince1990Ish
 import coreapi
 from django_filters import Filter, NumberFilter
 from django_filters.fields import Lookup
@@ -8,7 +8,23 @@ from django_filters.rest_framework import DjangoFilterBackend
 class NumberInFilter(filters.BaseInFilter, filters.NumberFilter):
     pass
 
+class MultnomahHomeOwnershipByRaceFilter(filters.FilterSet):
 
+    class Meta:
+        model = MultnomahHomeOwnershipByRace
+        fields = '__all__'
+
+class PortlandHomeAppreciationAnnuallySince1990IshFilter(filters.FilterSet):
+
+    class Meta:
+        model = PortlandHomeAppreciationAnnuallySince1990Ish
+        fields = '__all__'
+
+class HomeInflationKrigingFilter(filters.FilterSet):
+
+    class Meta:
+        model = HomeInflationKriging
+        fields = '__all__'
 
 class ResidentialBuildingPermitDataFilter(filters.FilterSet):
 

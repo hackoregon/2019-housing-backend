@@ -14,6 +14,9 @@ router.register(r'medianhouseholdinecomebyrace2017', views.MedianHouseholdIncome
 router.register(r'racebytenure1990t2017', views.RaceByTenure1990T2017ViewSet, basename="race-by-tenure-1990-t-2017")
 router.register(r'tl201041tabblock10', views.Tl201041Tabblock10ViewSet, basename="tl-2010-41-tab-block-10")
 router.register(r'residentialbuildingpermitdata', views.ResidentialBuildingPermitDataViewSet, basename="residential-building-permit-data")
+router.register(r'homeinflationkriging', views.HomeInflationKrigingViewSet, basename="home-inflation-kriging")
+router.register(r'multnomahhomeownershipbyrace', views.MultnomahHomeOwnershipByRaceViewSet, basename="multnomah-home-ownership-by-race")
+router.register(r'portlandhomeappreciationannuallysince1990ish', views.PortlandHomeAppreciationAnnuallySince1990IshViewSet, basename="portland-home-appreciation-annually-since-1990-ish")
 
 urlpatterns = [
     url(r'^', include(router.urls)),

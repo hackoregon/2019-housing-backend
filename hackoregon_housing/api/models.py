@@ -1,12 +1,42 @@
-from django.db import models
+from django.contrib.gis.db import models
 
-# class HomeInflationKriging(models.Model):
-#     appreciation_estimates = models.FloatField(blank=True, null=True)
-#     geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
-#
-#     class Meta:
-#         managed = False
-#         db_table = 'home_inflation_kriging'
+class MultnomahHomeOwnershipByRace(models.Model):
+    yr = models.FloatField(blank=True, null=True)
+    race = models.TextField(blank=True, null=True)
+    home_ownership_rate = models.FloatField(blank=True, null=True)
+    home_ownership_count = models.FloatField(blank=True, null=True)
+    household_count = models.FloatField(blank=True, null=True)
+    geoname = models.TextField(blank=True, null=True)
+    fips = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'multnomah_home_ownership_by_race'
+
+class PortlandHomeAppreciationAnnuallySince1990Ish(models.Model):
+    prev_sale_year = models.TextField(blank=True, null=True)
+    sale_year = models.IntegerField(blank=True, null=True)
+    raw_appreciation_mean = models.FloatField(blank=True, null=True)
+    raw_appreciation_25th = models.FloatField(blank=True, null=True)
+    raw_appreciation_75th = models.FloatField(blank=True, null=True)
+    raw_appreciation_med = models.FloatField(blank=True, null=True)
+    adj_appreciation_mean = models.FloatField(blank=True, null=True)
+    adj_appreciation_25th = models.FloatField(blank=True, null=True)
+    adj_appreciation_75th = models.FloatField(blank=True, null=True)
+    adj_appreciation_med = models.FloatField(blank=True, null=True)
+    count = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'portland_home_appreciation_annually_since_1990ish'
+
+class HomeInflationKriging(models.Model):
+    appreciation_estimates = models.FloatField(blank=True, null=True)
+    geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = 'home_inflation_kriging'
 
 class ResidentialBuildingPermitData(models.Model):
     index = models.BigIntegerField(primary_key=True)
