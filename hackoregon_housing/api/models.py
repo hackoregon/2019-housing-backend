@@ -74,7 +74,7 @@ class Sc2HmdaApprovalByRace2013T2017(models.Model):
     aland = models.FloatField(db_column='ALAND', blank=True, null=True)  # Field name made lowercase.
     awater = models.FloatField(db_column='AWATER', blank=True, null=True)  # Field name made lowercase.
     geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
-    tract_geom = models.GeometryField(blank=True, null=True)
+    tract_geom = models.GeometryField(srid=4269, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -212,7 +212,7 @@ class NcdbSampleYearly(models.Model):
     metrentcbshare = models.FloatField(blank=True, null=True)
     metpovrate = models.FloatField(blank=True, null=True)
     metbachshare = models.FloatField(blank=True, null=True)
-    tract_geom = models.GeometryField(blank=True, null=True)
+    tract_geom = models.GeometryField(srid=4269, blank=True, null=True)
 
 class NcdbMetroYearlyData(models.Model):
     year = models.IntegerField(blank=True, null=True)
@@ -302,7 +302,7 @@ class TotalLoans(models.Model):
     share_poc_owners = models.FloatField(blank=True, null=True)
     loan_lq = models.FloatField(blank=True, null=True)
     brks_lq = models.TextField(db_column='brks.lq', blank=True, null=True)  # Field renamed to remove unsuitable characters.
-    tract_geom = models.GeometryField(blank=True, null=True)  # This field type is a guess.
+    tract_geom = models.GeometryField(srid=4269, blank=True, null=True)  # This field type is a guess.
 
     class Meta:
         managed = True
@@ -363,7 +363,7 @@ class RaceByTenure1990T2017(models.Model):
     share_total_own_other = models.FloatField(blank=True, null=True)
     share_total_own_multi = models.FloatField(blank=True, null=True)
     share_total_own_hisp = models.FloatField(blank=True, null=True)
-    tract_geom = models.GeometryField(blank=True, null=True)
+    tract_geom = models.GeometryField(srid=4269, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -386,7 +386,7 @@ class Tl201041Tabblock10(models.Model):
     awater10 = models.DecimalField(max_digits=14, decimal_places=0, blank=True, null=True)
     intptlat10 = models.CharField(max_length=11, blank=True, null=True)
     intptlon10 = models.CharField(max_length=12, blank=True, null=True)
-    wkb_geometry = models.GeometryField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = models.GeometryField(srid=4269, blank=True, null=True)  # This field type is a guess.
 
     class Meta:
         managed = False
