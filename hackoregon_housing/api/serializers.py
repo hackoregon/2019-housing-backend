@@ -1,5 +1,15 @@
-from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10, ResidentialBuildingPermitData, HomeInflationKriging, MultnomahHomeOwnershipByRace, PortlandHomeAppreciationAnnuallySince1990Ish
+from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10, ResidentialBuildingPermitData, HomeInflationKriging, MultnomahHomeOwnershipByRace, PortlandHomeAppreciationAnnuallySince1990Ish, Sc2HmdaApprovalByRace2013T2017, MedianHouseholdIncomeByRace1990T2017Msa
 from rest_framework_gis import serializers
+
+class Sc2HmdaApprovalByRace2013T2017Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sc2HmdaApprovalByRace2013T2017
+        fields = "__all__" # TODO: replace with individual fields
+
+class MedianHouseholdIncomeByRace1990T2017MsaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MedianHouseholdIncomeByRace1990T2017Msa
+        fields = "__all__" # TODO: replace with individual fields
 
 class MultnomahHomeOwnershipByRaceSerializer(serializers.ModelSerializer):
     class Meta:

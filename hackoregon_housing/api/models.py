@@ -1,5 +1,85 @@
 from django.contrib.gis.db import models
 
+class MedianHouseholdIncomeByRace1990T2017Msa(models.Model):
+    race_explicit = models.TextField(blank=True, null=True)
+    year = models.FloatField(blank=True, null=True)
+    adjusted_median_income = models.FloatField(blank=True, null=True)
+    source = models.TextField(blank=True, null=True)
+    aggregation = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'median_household_income_by_race_1990t2017_msa'
+
+class Sc2HmdaApprovalByRace2013T2017(models.Model):
+    geoid = models.TextField(db_column='GEOID', blank=True, null=True)  # Field name made lowercase.
+    datayear = models.FloatField(db_column='DATAYEAR', blank=True, null=True)  # Field name made lowercase.
+    source = models.TextField(blank=True, null=True)
+    total_hh = models.FloatField(blank=True, null=True)
+    total_own = models.FloatField(blank=True, null=True)
+    share_own = models.FloatField(blank=True, null=True)
+    total_hh_white = models.FloatField(blank=True, null=True)
+    total_own_white = models.FloatField(blank=True, null=True)
+    share_own_white = models.FloatField(blank=True, null=True)
+    total_hh_black = models.FloatField(blank=True, null=True)
+    total_own_black = models.FloatField(blank=True, null=True)
+    share_own_black = models.FloatField(blank=True, null=True)
+    total_hh_aian = models.FloatField(blank=True, null=True)
+    total_own_aian = models.FloatField(blank=True, null=True)
+    share_own_aian = models.FloatField(blank=True, null=True)
+    total_hh_api = models.FloatField(blank=True, null=True)
+    total_own_api = models.FloatField(blank=True, null=True)
+    share_own_api = models.FloatField(blank=True, null=True)
+    total_hh_other = models.FloatField(blank=True, null=True)
+    total_own_other = models.FloatField(blank=True, null=True)
+    share_own_other = models.FloatField(blank=True, null=True)
+    total_hh_multi = models.FloatField(blank=True, null=True)
+    total_own_multi = models.FloatField(blank=True, null=True)
+    share_own_multi = models.FloatField(blank=True, null=True)
+    total_hh_hisp = models.FloatField(blank=True, null=True)
+    total_own_hisp = models.FloatField(blank=True, null=True)
+    share_own_hisp = models.FloatField(blank=True, null=True)
+    share_total_own_white = models.FloatField(blank=True, null=True)
+    share_total_own_black = models.FloatField(blank=True, null=True)
+    share_total_own_aian = models.FloatField(blank=True, null=True)
+    share_total_own_api = models.FloatField(blank=True, null=True)
+    share_total_own_other = models.FloatField(blank=True, null=True)
+    share_total_own_multi = models.FloatField(blank=True, null=True)
+    share_total_own_hisp = models.FloatField(blank=True, null=True)
+    loans_total = models.FloatField(blank=True, null=True)
+    loans_white = models.FloatField(blank=True, null=True)
+    loans_black = models.FloatField(blank=True, null=True)
+    loans_aian = models.FloatField(blank=True, null=True)
+    loans_api = models.FloatField(blank=True, null=True)
+    loans_multi = models.FloatField(blank=True, null=True)
+    loans_hisp = models.FloatField(blank=True, null=True)
+    loans_share_white = models.FloatField(blank=True, null=True)
+    loans_share_black = models.FloatField(blank=True, null=True)
+    loans_share_aian = models.FloatField(blank=True, null=True)
+    loans_share_api = models.FloatField(blank=True, null=True)
+    loans_share_multi = models.FloatField(blank=True, null=True)
+    loans_share_hisp = models.FloatField(blank=True, null=True)
+    lq_white = models.FloatField(blank=True, null=True)
+    lq_black = models.FloatField(blank=True, null=True)
+    lq_aian = models.FloatField(blank=True, null=True)
+    lq_api = models.FloatField(blank=True, null=True)
+    lq_multi = models.FloatField(blank=True, null=True)
+    lq_hisp = models.FloatField(blank=True, null=True)
+    lq_white_brks = models.TextField(db_column='lq_white.brks', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    lq_black_brks = models.TextField(db_column='lq_black.brks', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    lq_aian_brks = models.TextField(db_column='lq_aian.brks', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    lq_api_brks = models.TextField(db_column='lq_api.brks', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    lq_multi_brks = models.TextField(db_column='lq_multi.brks', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    lq_hisp_brks = models.TextField(db_column='lq_hisp.brks', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    aland = models.FloatField(db_column='ALAND', blank=True, null=True)  # Field name made lowercase.
+    awater = models.FloatField(db_column='AWATER', blank=True, null=True)  # Field name made lowercase.
+    geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    tract_geom = models.GeometryField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'SC2_hmda_approval_by_race_2013t2017'
+
 class MultnomahHomeOwnershipByRace(models.Model):
     yr = models.FloatField(blank=True, null=True)
     race = models.TextField(blank=True, null=True)

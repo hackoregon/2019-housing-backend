@@ -1,11 +1,11 @@
-from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10, ResidentialBuildingPermitData, HomeInflationKriging, PortlandHomeAppreciationAnnuallySince1990Ish, MultnomahHomeOwnershipByRace
-from api.serializers import NcdbSampleChangesSerializer, NcdbSampleYearlySerializer, FIPSRecordsSerializer, HmdaOrwaSerializer, TotalLoansSerializer, MedianHouseholdIncomeByRace2017Serializer, RaceByTenure1990T2017Serializer, Tl201041Tabblock10Serializer, ResidentialBuildingPermitDataSerializer, HomeInflationKrigingSerializer, PortlandHomeAppreciationAnnuallySince1990IshSerializer, MultnomahHomeOwnershipByRaceSerializer
+from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10, ResidentialBuildingPermitData, HomeInflationKriging, PortlandHomeAppreciationAnnuallySince1990Ish, MultnomahHomeOwnershipByRace, Sc2HmdaApprovalByRace2013T2017, MedianHouseholdIncomeByRace1990T2017Msa
+from api.serializers import NcdbSampleChangesSerializer, NcdbSampleYearlySerializer, FIPSRecordsSerializer, HmdaOrwaSerializer, TotalLoansSerializer, MedianHouseholdIncomeByRace2017Serializer, RaceByTenure1990T2017Serializer, Tl201041Tabblock10Serializer, ResidentialBuildingPermitDataSerializer, HomeInflationKrigingSerializer, PortlandHomeAppreciationAnnuallySince1990IshSerializer, MultnomahHomeOwnershipByRaceSerializer, Sc2HmdaApprovalByRace2013T2017Serializer, MedianHouseholdIncomeByRace1990T2017MsaSerializer
 from django.contrib.postgres.fields import ArrayField
 from rest_framework.response import Response
 from rest_framework import viewsets
 # from rest_framework.decorators import list_route
 from rest_framework.views import APIView
-from api.filters import NcdbSampleChangesFilter, NcdbSampleYearlyFilter, FIPSRecordsFilter, HmdaOrwaFilter, TotalLoansFilter, MedianHouseholdIncomeByRace2017Filter, RaceByTenure1990T2017Filter, Tl201041Tabblock10Filter, ResidentialBuildingPermitDataFilter, HomeInflationKrigingFilter, PortlandHomeAppreciationAnnuallySince1990IshFilter, MultnomahHomeOwnershipByRaceFilter
+from api.filters import NcdbSampleChangesFilter, NcdbSampleYearlyFilter, FIPSRecordsFilter, HmdaOrwaFilter, TotalLoansFilter, MedianHouseholdIncomeByRace2017Filter, RaceByTenure1990T2017Filter, Tl201041Tabblock10Filter, ResidentialBuildingPermitDataFilter, HomeInflationKrigingFilter, PortlandHomeAppreciationAnnuallySince1990IshFilter, MultnomahHomeOwnershipByRaceFilter, Sc2HmdaApprovalByRace2013T2017Filter, MedianHouseholdIncomeByRace1990T2017MsaFilter
 from django_filters import rest_framework as filters
 from django_filters.rest_framework import DjangoFilterBackend
 import coreapi
@@ -61,6 +61,18 @@ class CardOneView(APIView):
             response[year]["asoth"] = round(response[year]["asoth"])
 
         return Response(response)
+
+class Sc2HmdaApprovalByRace2013T2017ViewSet(viewsets.ModelViewSet):
+    queryset = Sc2HmdaApprovalByRace2013T2017.objects.all()
+    serializer_class = Sc2HmdaApprovalByRace2013T2017Serializer
+    filter_class = Sc2HmdaApprovalByRace2013T2017Filter
+    ordering_fields = '__all__'
+
+class MedianHouseholdIncomeByRace1990T2017MsaViewSet(viewsets.ModelViewSet):
+    queryset = MedianHouseholdIncomeByRace1990T2017Msa.objects.all()
+    serializer_class = MedianHouseholdIncomeByRace1990T2017MsaSerializer
+    filter_class = MedianHouseholdIncomeByRace1990T2017MsaFilter
+    ordering_fields = '__all__'
 
 class PortlandHomeAppreciationAnnuallySince1990IshViewSet(viewsets.ModelViewSet):
     queryset = PortlandHomeAppreciationAnnuallySince1990Ish.objects.all()
