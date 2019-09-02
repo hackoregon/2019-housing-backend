@@ -18,7 +18,7 @@ class Sc2HmdaApprovalByRace2013T2017Filter(filters.FilterSet):
 
     class Meta:
         model = Sc2HmdaApprovalByRace2013T2017
-        fields = '__all__'
+        exclude = ['tract_geom']
 
 class MultnomahHomeOwnershipByRaceFilter(filters.FilterSet):
 
@@ -36,7 +36,7 @@ class HomeInflationKrigingFilter(filters.FilterSet):
 
     class Meta:
         model = HomeInflationKriging
-        fields = '__all__'
+        exclude = ['geometry']
 
 class ResidentialBuildingPermitDataFilter(filters.FilterSet):
 
@@ -56,7 +56,7 @@ class NcdbSampleYearlyFilter(filters.FilterSet):
 
     class Meta:
         model = NcdbSampleYearly
-        fields = '__all__'
+        exclude = ['tract_geom']
 
 class FIPSRecordsFilter(filters.FilterSet):
 
@@ -74,22 +74,22 @@ class TotalLoansFilter(filters.FilterSet):
 
     class Meta:
         model = TotalLoans
-        fields = '__all__'
+        exclude = ['tract_geom']
 
 class MedianHouseholdIncomeByRace2017Filter(filters.FilterSet):
 
     class Meta:
         model = MedianHouseholdIncomeByRace2017
-        fields = "__all__" # TODO: replace with individual fields
+        exclude = ['tract_geom']
 
 class RaceByTenure1990T2017Filter(filters.FilterSet):
 
     class Meta:
         model = RaceByTenure1990T2017
-        fields = "__all__" # TODO: replace with individual fields
+        exclude = ['tract_geom']
 
 class Tl201041Tabblock10Filter(filters.FilterSet):
 
     class Meta:
         model = Tl201041Tabblock10
-        fields = "__all__" # TODO: replace with individual fields
+        exclude = ['wkb_geometry']

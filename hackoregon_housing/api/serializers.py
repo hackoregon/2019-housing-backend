@@ -75,4 +75,5 @@ class RaceByTenure1990T2017Serializer(serializers.GeoFeatureModelSerializer):
 class Tl201041Tabblock10Serializer(serializers.ModelSerializer):
     class Meta:
         model = Tl201041Tabblock10
+        geo_field = 'wkb_geometry'
         fields = "__all__" # TODO: replace with individual fields

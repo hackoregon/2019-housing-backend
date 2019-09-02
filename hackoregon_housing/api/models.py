@@ -386,7 +386,7 @@ class Tl201041Tabblock10(models.Model):
     awater10 = models.DecimalField(max_digits=14, decimal_places=0, blank=True, null=True)
     intptlat10 = models.CharField(max_length=11, blank=True, null=True)
     intptlon10 = models.CharField(max_length=12, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = models.GeometryField(blank=True, null=True)  # This field type is a guess.
 
     class Meta:
         managed = False
