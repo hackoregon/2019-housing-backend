@@ -484,14 +484,19 @@ med_income_by_race <- rbind(med_income_1990, med_income_2000, med_income_2010, m
                                    race == "white" ~ "White",
                                    race == "hisp" ~ "Hispanic or Latino",
                                    race == "whitenh" ~ "White, not Hispanic",
-                                   TRUE ~ "ERR"))
+                                   TRUE ~ "ERR")) %>%
+  filter(year != 2012, race != "whitenh")
 
 saveRDS(med_income_by_race, "../data/cleaned_data/median_household_income_by_race_1990t2017_MSA.RDS")
+med_income_by_race <- readRDS("../data/cleaned_data/median_household_income_by_race_1990t2017_MSA.RDS")
 
+med_income_by_race %>%
+  ggplot(aes(x = year, y = adjusted_median_income, color = race_explicit)) +
+  scale_y_continuous(labels=scales::dollar_format(prefix="$")) +
+  geom_line(size = 2, alpha = 0.8) +
+  labs(x = "Year", y = "Income", color = "Race",
+       title = "Median household income by race",
+       subtitle = "Portland region, 1990 to 2017, adjusted for inflation",
+       caption = "Source: Decennial Census 1990, 2000; ACS 2006-10 and 2013-17. Adjusted for inflation to 2018$ using CPI-U-RS")
+                 
 
-plotly::ggplotly(med_income_by_race %>%
-                   filter(year != 2012, race != "whitenh") %>%
-                   ggplot(aes(x = year, y = adjusted_median_income, color = race_explicit)) +
-                   scale_y_continuous(labels=scales::dollar_format(prefix="$")) +
-                   geom_line(size = 2, alpha = 0.8)
-                 )

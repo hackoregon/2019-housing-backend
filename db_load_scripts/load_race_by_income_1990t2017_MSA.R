@@ -5,10 +5,11 @@ p_load(tidyverse, RPostgreSQL)
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 ##### Posting to PostGRES database #####
+race_income <- readRDS("../data/cleaned_data/median_household_income_by_race_1990t2017_MSA.RDS") %>%
+  select(race_explicit, year, adjusted_median_income, source, aggregation)
+
 # source the postgresql password
 source("../server_password.R") # pw <- {'PASSWORD'}
-
-race_income <- readRDS("../data/cleaned_data/median_household_income_by_race_1990t2017_MSA.RDS")
 
 # loads the PostgreSQL driver
 drv <- dbDriver("PostgreSQL")
@@ -19,11 +20,12 @@ con <- dbConnect(drv, dbname = "housing-2019-staging",
                  user = "housing2019", password = pw)
 rm(pw) # removes the password
 
-# dbSendQuery(con, "DROP TABLE median_household_income_by_race_1990t2017_MSA")
+dbSendQuery(con, "DROP TABLE median_household_income_by_race_1990t2017_msa")
 
 # if the table doesn't exist, create it, otherwise notify in console
-if (!(dbExistsTable(con, "median_household_income_by_race_1990t2017_MSA"))) {
-  dbWriteTable(con, "median_household_income_by_race_1990t2017_MSA", race_income, row.names = FALSE)
+if (!(dbExistsTable(con, "median_household_income_by_race_1990t2017_msa"))) {
+  dbWriteTable(con, "median_household_income_by_race_1990t2017_msa", race_income, row.names = FALSE)
 } else {
   print("Table already in database")
 }
+
