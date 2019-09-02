@@ -1,9 +1,10 @@
 from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10, ResidentialBuildingPermitData, HomeInflationKriging, MultnomahHomeOwnershipByRace, PortlandHomeAppreciationAnnuallySince1990Ish, Sc2HmdaApprovalByRace2013T2017, MedianHouseholdIncomeByRace1990T2017Msa
 from rest_framework_gis import serializers
 
-class Sc2HmdaApprovalByRace2013T2017Serializer(serializers.ModelSerializer):
+class Sc2HmdaApprovalByRace2013T2017Serializer(serializers.GeoFeatureModelSerializer):
     class Meta:
         model = Sc2HmdaApprovalByRace2013T2017
+        geo_field = 'tract_geom'
         fields = "__all__" # TODO: replace with individual fields
 
 class MedianHouseholdIncomeByRace1990T2017MsaSerializer(serializers.ModelSerializer):
@@ -32,9 +33,10 @@ class ResidentialBuildingPermitDataSerializer(serializers.ModelSerializer):
         model = ResidentialBuildingPermitData
         fields = "__all__" # TODO: replace with individual fields
 
-class NcdbSampleYearlySerializer(serializers.ModelSerializer):
+class NcdbSampleYearlySerializer(serializers.GeoFeatureModelSerializer):
     class Meta:
         model = NcdbSampleYearly
+        geo_field = 'tract_geom'
         fields = "__all__" # TODO: replace with individual fields
 
 class NcdbSampleChangesSerializer(serializers.ModelSerializer):
@@ -52,19 +54,22 @@ class HmdaOrwaSerializer(serializers.ModelSerializer):
         model = HmdaOrwa
         fields = "__all__" # TODO: replace with individual fields
 
-class TotalLoansSerializer(serializers.ModelSerializer):
+class TotalLoansSerializer(serializers.GeoFeatureModelSerializer):
     class Meta:
         model = TotalLoans
+        geo_field = 'tract_geom'
         fields = "__all__" # TODO: replace with individual fields
 
-class MedianHouseholdIncomeByRace2017Serializer(serializers.ModelSerializer):
+class MedianHouseholdIncomeByRace2017Serializer(serializers.GeoFeatureModelSerializer):
     class Meta:
         model = MedianHouseholdIncomeByRace2017
+        geo_field = 'tract_geom'
         fields = "__all__" # TODO: replace with individual fields
 
-class RaceByTenure1990T2017Serializer(serializers.ModelSerializer):
+class RaceByTenure1990T2017Serializer(serializers.GeoFeatureModelSerializer):
     class Meta:
         model = RaceByTenure1990T2017
+        geo_field = 'tract_geom'
         fields = "__all__" # TODO: replace with individual fields
 
 class Tl201041Tabblock10Serializer(serializers.ModelSerializer):
