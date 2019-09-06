@@ -19,36 +19,24 @@ class CardOneView(APIView):
 
         years = set(row.year for row in portland_rows)
         response = {year : {"white" : 0, "black": 0, "hisp": 0, "asoth": 0} for year in years}
-        skips = []
+        skips = set()
 
         for row in portland_rows:
+
             print(row.year)
+
+            blackshare = row.blackshare or 0
+            if( row.year == 1990 and (blackshare * 0.01) < black_proportion_filter):
+                skips.add(row.fips_code.geo_fips)
+
             if row.fips_code.geo_fips in skips:
                 continue
 
-            blackshare = row.blackshare
-            if blackshare is None:
-                blackshare = 0
+            pop = row.tractpopulation or 0
+            whiteshare = row.whiteshare or 0
+            hispshare = row.hispshare or 0
+            asothshare = row.asothshare or 0
 
-            if( row.year == 1990 and (blackshare * 0.01) < black_proportion_filter):
-                skips.append(row.fips_code.geo_fips)
-                continue
-            else:
-                print('Black share: ' + str(blackshare * 0.01))
-                print('Filter: ' + str(black_proportion_filter))
-
-            pop = row.tractpopulation
-            if pop is None:
-                pop = 0
-            whiteshare = row.whiteshare
-            if whiteshare is None:
-                whiteshare = 0
-            hispshare = row.hispshare
-            if hispshare is None:
-                hispshare = 0
-            asothshare = row.asothshare
-            if asothshare is None:
-                asothshare = 0
             response[row.year]["white"] += (pop * whiteshare * 0.01)
             response[row.year]["black"] += (pop * blackshare * 0.01)
             response[row.year]["hisp"] += (pop * hispshare * 0.01)
