@@ -1,5 +1,16 @@
 from django.contrib.gis.db import models
 
+class HolcPortlandRedlining(models.Model):
+    name = models.TextField(blank=True, null=True)
+    holc_id = models.TextField(blank=True, null=True)
+    holc_grade = models.TextField(blank=True, null=True)
+    area_descr = models.TextField(blank=True, null=True)
+    geometry = models.GeometryField(blank=True, null=True)  # This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = 'holc_portland_redlining'
+
 class MedianHouseholdIncomeByRace1990T2017Msa(models.Model):
     race_explicit = models.TextField(blank=True, null=True)
     year = models.FloatField(blank=True, null=True)

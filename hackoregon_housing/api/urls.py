@@ -20,6 +20,10 @@ router.register(r'portlandhomeappreciationannuallysince1990ish', views.PortlandH
 router.register(r'sc2hmdaapprovalbyrace2013t2017', views.Sc2HmdaApprovalByRace2013T2017ViewSet, basename="sc2-hmda-approval-by-race-2013t2017")
 router.register(r'medianhouseholdincomebyrace1990t2017msa', views.MedianHouseholdIncomeByRace1990T2017MsaViewSet, basename="median-household-income-by-race-2017")
 
+router.register(r'holcportlandredlining', views.HolcPortlandRedliningViewSet, basename="holc-portland-redlining")
+
+
+
 urlpatterns = [
     url(r'^', include(router.urls)),
 ]
