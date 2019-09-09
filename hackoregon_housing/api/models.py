@@ -82,24 +82,27 @@ class Sc2HmdaApprovalByRace2013T2017(models.Model):
     lq_api_brks = models.TextField(db_column='lq_api.brks', blank=True, null=True)  # Field renamed to remove unsuitable characters.
     lq_multi_brks = models.TextField(db_column='lq_multi.brks', blank=True, null=True)  # Field renamed to remove unsuitable characters.
     lq_hisp_brks = models.TextField(db_column='lq_hisp.brks', blank=True, null=True)  # Field renamed to remove unsuitable characters.
-    aland = models.FloatField(db_column='ALAND', blank=True, null=True)  # Field name made lowercase.
-    awater = models.FloatField(db_column='AWATER', blank=True, null=True)  # Field name made lowercase.
-    geometry = models.GeometryField(srid=4269, blank=True, null=True)  # This field type is a guess.
-    tract_geom = models.GeometryField(srid=4269, blank=True, null=True)
     share_hh_white = models.FloatField(blank=True, null=True)
     share_hh_black = models.FloatField(blank=True, null=True)
     share_hh_aian = models.FloatField(blank=True, null=True)
     share_hh_api = models.FloatField(blank=True, null=True)
-    share_hh_other = models.FloatField(blank=True, null=True)
     share_hh_multi = models.FloatField(blank=True, null=True)
     share_hh_hisp = models.FloatField(blank=True, null=True)
     lq_hh_white = models.FloatField(blank=True, null=True)
     lq_hh_black = models.FloatField(blank=True, null=True)
     lq_hh_aian = models.FloatField(blank=True, null=True)
     lq_hh_api = models.FloatField(blank=True, null=True)
-    lq_hh_other = models.FloatField(blank=True, null=True)
     lq_hh_multi = models.FloatField(blank=True, null=True)
     lq_hh_hisp = models.FloatField(blank=True, null=True)
+    lq_hh_white_brks = models.TextField(db_column='lq_hh_white.brks', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    lq_hh_black_brks = models.TextField(db_column='lq_hh_black.brks', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    lq_hh_aian_brks = models.TextField(db_column='lq_hh_aian.brks', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    lq_hh_api_brks = models.TextField(db_column='lq_hh_api.brks', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    lq_hh_multi_brks = models.TextField(db_column='lq_hh_multi.brks', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    lq_hh_hisp_brks = models.TextField(db_column='lq_hh_hisp.brks', blank=True, null=True)  # Field renamed to remove unsuitable characters.
+    aland = models.FloatField(db_column='ALAND', blank=True, null=True)  # Field name made lowercase.
+    awater = models.FloatField(db_column='AWATER', blank=True, null=True)  # Field name made lowercase.
+    geometry = models.GeometryField(srid=4269, blank=True, null=True)  # This field type is a guess.
 
     class Meta:
         managed = False

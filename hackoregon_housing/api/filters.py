@@ -27,7 +27,7 @@ class Sc2HmdaApprovalByRace2013T2017Filter(filters.FilterSet):
 
     class Meta:
         model = Sc2HmdaApprovalByRace2013T2017
-        exclude = ['tract_geom', 'geometry']
+        exclude = ['geometry']
 
 class MultnomahHomeOwnershipByRaceFilter(filters.FilterSet):
 

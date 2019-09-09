@@ -10,7 +10,7 @@ class HolcPortlandRedliningSerializer(serializers.GeoFeatureModelSerializer):
 class Sc2HmdaApprovalByRace2013T2017Serializer(serializers.GeoFeatureModelSerializer):
     class Meta:
         model = Sc2HmdaApprovalByRace2013T2017
-        geo_field = 'tract_geom'
+        geo_field = 'geometry'
         fields = "__all__" # TODO: replace with individual fields
 
 class MedianHouseholdIncomeByRace1990T2017MsaSerializer(serializers.ModelSerializer):
