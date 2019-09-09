@@ -21,6 +21,7 @@ router.register(r'sc2hmdaapprovalbyrace2013t2017', views.Sc2HmdaApprovalByRace20
 router.register(r'medianhouseholdincomebyrace1990t2017msa', views.MedianHouseholdIncomeByRace1990T2017MsaViewSet, basename="median-household-income-by-race-2017")
 
 router.register(r'holcportlandredlining', views.HolcPortlandRedliningViewSet, basename="holc-portland-redlining")
+router.register(r'portlandhomeownershipbyrace', views.PortlandHomeOwnershipByRaceViewSet, basename="portland-home-ownership-by-race")
 
 
 

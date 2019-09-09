@@ -1,4 +1,5 @@
 from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10, ResidentialBuildingPermitData, HomeInflationKriging, MultnomahHomeOwnershipByRace, PortlandHomeAppreciationAnnuallySince1990Ish, Sc2HmdaApprovalByRace2013T2017, MedianHouseholdIncomeByRace1990T2017Msa, HolcPortlandRedlining
+from api.pre_existing_models import PortlandHomeOwnershipByRace
 from rest_framework_gis import serializers
 
 class HolcPortlandRedliningSerializer(serializers.GeoFeatureModelSerializer):
@@ -82,4 +83,9 @@ class Tl201041Tabblock10Serializer(serializers.ModelSerializer):
     class Meta:
         model = Tl201041Tabblock10
         geo_field = 'wkb_geometry'
+        fields = "__all__" # TODO: replace with individual fields
+
+class PortlandHomeOwnershipByRaceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PortlandHomeOwnershipByRace        
         fields = "__all__" # TODO: replace with individual fields
