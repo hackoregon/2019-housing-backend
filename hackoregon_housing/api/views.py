@@ -9,21 +9,23 @@ from api.filters import NcdbSampleChangesFilter, NcdbSampleYearlyFilter, FIPSRec
 from django_filters import rest_framework as filters
 from django_filters.rest_framework import DjangoFilterBackend
 import coreapi
+from functools import reduce
+from django.db.models import Q
 
 class CardOneView(APIView):
 
     def get(self, request):
         black_proportion_filter = float(request.GET.get('1990-black-pop-proportion-floor', '0'))
 
-        portland_rows = NcdbSampleYearly.objects.filter(metroname="Portland-Vancouver-Hillsboro, OR-WA").select_related('fips_code').order_by('year')
+        tracts = [41005, 41051, 41067, 53011]
+        query_filter = reduce(lambda q, tract: q | Q(fips_code__geo_fips__startswith=tract), tracts, Q())
+        portland_rows = NcdbSampleYearly.objects.filter(query_filter).select_related('fips_code').order_by('year')
 
         years = set(row.year for row in portland_rows)
         response = {year : {"white" : 0, "black": 0, "hisp": 0, "asoth": 0} for year in years}
         skips = set()
 
         for row in portland_rows:
-
-            print(row.year)
 
             blackshare = row.blackshare or 0
             if( row.year == 1990 and (blackshare * 0.01) < black_proportion_filter):
