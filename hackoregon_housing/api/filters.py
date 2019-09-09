@@ -5,6 +5,8 @@ import coreapi
 from django_filters import Filter, NumberFilter
 from django_filters.fields import Lookup
 from django_filters.rest_framework import DjangoFilterBackend
+from functools import reduce
+from django.db.models import Q
 
 class NumberInFilter(filters.BaseInFilter, filters.NumberFilter):
     pass
@@ -25,7 +27,7 @@ class Sc2HmdaApprovalByRace2013T2017Filter(filters.FilterSet):
 
     class Meta:
         model = Sc2HmdaApprovalByRace2013T2017
-        exclude = ['tract_geom']
+        exclude = ['tract_geom', 'geometry']
 
 class MultnomahHomeOwnershipByRaceFilter(filters.FilterSet):
 
@@ -64,6 +66,18 @@ class NcdbSampleYearlyFilter(filters.FilterSet):
     class Meta:
         model = NcdbSampleYearly
         exclude = ['tract_geom']
+
+    @property
+    def qs(self):
+        parent = super(NcdbSampleYearlyFilter, self).qs
+        # only include metro counties and clark counties if card 4 flag = true
+        tract_region = self.request.GET.get('tract-region', None)
+        if tract_region == 'pdx':
+            tracts = [41005, 41051, 41067, 53011]
+            query_filter = reduce(lambda q, tract: q | Q(fips_code__geo_fips__startswith=tract), tracts, Q())
+            return parent.filter(query_filter)
+        else:
+            return parent
 
 class FIPSRecordsFilter(filters.FilterSet):
 
