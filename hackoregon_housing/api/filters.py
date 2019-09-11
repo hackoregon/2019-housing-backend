@@ -1,5 +1,5 @@
 from django_filters import rest_framework as filters
-from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10, ResidentialBuildingPermitData, HomeInflationKriging, MultnomahHomeOwnershipByRace, PortlandHomeAppreciationAnnuallySince1990Ish, Sc2HmdaApprovalByRace2013T2017, MedianHouseholdIncomeByRace1990T2017Msa, HolcPortlandRedlining, TractToNeighborhoodPdx
+from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10, ResidentialBuildingPermitData, HomeInflationKriging, MultnomahHomeOwnershipByRace, PortlandHomeAppreciationAnnuallySince1990Ish, Sc2HmdaApprovalByRace2013T2017, MedianHouseholdIncomeByRace1990T2017Msa, HolcPortlandRedlining
 from api.pre_existing_models import PortlandHomeOwnershipByRace
 
 import coreapi
@@ -16,12 +16,6 @@ class MedianHouseholdIncomeByRace1990T2017MsaFilter(filters.FilterSet):
 
     class Meta:
         model = MedianHouseholdIncomeByRace1990T2017Msa
-        fields = '__all__'
-
-class TractToNeighborhoodPdxFilter(filters.FilterSet):
-
-    class Meta:
-        model = TractToNeighborhoodPdx
         fields = '__all__'
 
 class HolcPortlandRedliningFilter(filters.FilterSet):
