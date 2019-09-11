@@ -1,4 +1,5 @@
-from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10, ResidentialBuildingPermitData, HomeInflationKriging, PortlandHomeAppreciationAnnuallySince1990Ish, MultnomahHomeOwnershipByRace, Sc2HmdaApprovalByRace2013T2017, MedianHouseholdIncomeByRace1990T2017Msa, HolcPortlandRedlining, TractToNeighborhoodPdx, PortlandHomeOwnershipByRace
+from api.models import NcdbSampleChanges, NcdbSampleYearly, FIPSRecords, HmdaOrwa, TotalLoans, MedianHouseholdIncomeByRace2017, RaceByTenure1990T2017, Tl201041Tabblock10, ResidentialBuildingPermitData, HomeInflationKriging, PortlandHomeAppreciationAnnuallySince1990Ish, MultnomahHomeOwnershipByRace, Sc2HmdaApprovalByRace2013T2017, MedianHouseholdIncomeByRace1990T2017Msa, HolcPortlandRedlining, TractToNeighborhoodPdx
+from api.pre_existing_models import PortlandHomeOwnershipByRace
 from api.serializers import NcdbSampleChangesSerializer, NcdbSampleYearlySerializer, FIPSRecordsSerializer, HmdaOrwaSerializer, TotalLoansSerializer, MedianHouseholdIncomeByRace2017Serializer, RaceByTenure1990T2017Serializer, Tl201041Tabblock10Serializer, ResidentialBuildingPermitDataSerializer, HomeInflationKrigingSerializer, PortlandHomeAppreciationAnnuallySince1990IshSerializer, MultnomahHomeOwnershipByRaceSerializer, Sc2HmdaApprovalByRace2013T2017Serializer, MedianHouseholdIncomeByRace1990T2017MsaSerializer, HolcPortlandRedliningSerializer, PortlandHomeOwnershipByRaceSerializer, TractToNeighborhoodPdxSerializer
 from django.contrib.postgres.fields import ArrayField
 from rest_framework.response import Response
@@ -63,6 +64,8 @@ class TractToNeighborhoodPdxViewSet(viewsets.ModelViewSet):
     serializer_class = TractToNeighborhoodPdxSerializer
     filter_class = TractToNeighborhoodPdxFilter
     ordering_fields = '__all__'
+
+
 
 class Sc2HmdaApprovalByRace2013T2017ViewSet(viewsets.ModelViewSet):
     queryset = Sc2HmdaApprovalByRace2013T2017.objects.all()
