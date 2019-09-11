@@ -1,6 +1,6 @@
 from django.conf.urls import include, url
 from django.urls import path
-from rest_framework.routers import DefaultRouter
+from restframework.routers import DefaultRouter
 from api import views
 
 router = DefaultRouter()
@@ -22,7 +22,7 @@ router.register(r'medianhouseholdincomebyrace1990t2017msa', views.MedianHousehol
 
 router.register(r'holcportlandredlining', views.HolcPortlandRedliningViewSet, basename="holc-portland-redlining")
 router.register(r'portlandhomeownershipbyrace', views.PortlandHomeOwnershipByRaceViewSet, basename="portland-home-ownership-by-race")
-
+router.register(r'tracttoneighborhoodpdx', views.TractToNeighborhoodPdxViewSet, basename="tract-to-neighborhood-pdx")
 
 
 urlpatterns = [

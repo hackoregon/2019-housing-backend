@@ -1,5 +1,15 @@
 from django.contrib.gis.db import models
 
+class TractToNeighborhoodPdx(models.Model):
+    geoid = models.FloatField(db_column='GEOID', blank=True, null=True)  # Field name made lowercase.
+    in_pdx = models.TextField(blank=True, null=True)
+    area = models.TextField(blank=True, null=True)
+    neighborhood = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'tract_to_neighborhood_pdx'
+
 class HolcPortlandRedlining(models.Model):
     name = models.TextField(blank=True, null=True)
     holc_id = models.TextField(blank=True, null=True)
